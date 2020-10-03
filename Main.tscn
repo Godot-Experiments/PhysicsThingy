@@ -20,15 +20,12 @@ adjustment_saturation = 1.5
 
 [node name="Bg" type="Sprite" parent="."]
 modulate = Color( 0.192157, 0.227451, 0.305882, 1 )
-position = Vector2( 463.576, -31.8493 )
-scale = Vector2( 2813.94, -1558.61 )
+position = Vector2( 475.559, 197.835 )
+scale = Vector2( 3293.28, -2305.58 )
 texture = ExtResource( 7 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.145098, 0.145098, 0.145098, 1 )
-
-[node name="Boxes" type="Node2D" parent="."]
-z_index = 1
+color = Color( 0.329412, 0.329412, 0.329412, 1 )
 
 [node name="Walls" type="Node2D" parent="."]
 z_index = 1
@@ -37,6 +34,13 @@ z_index = 1
 position = Vector2( -170.195, -159.942 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2( 608.208, 686.17 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
+position = Vector2( 100.388, -790.372 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4"]
 position = Vector2( 608.208, 686.17 )
 shape = SubResource( 1 )
 
@@ -70,7 +74,7 @@ position = Vector2( 440.001, 396.28 )
 position = Vector2( 422.595, 168.004 )
 
 [node name="BoxC2" parent="BoxCs" instance=ExtResource( 4 )]
-position = Vector2( 556.68, 356.626 )
+position = Vector2( 556.68, 357.626 )
 
 [node name="BoxC3" parent="BoxCs" instance=ExtResource( 4 )]
 position = Vector2( 486.582, 314.767 )
@@ -78,123 +82,48 @@ position = Vector2( 486.582, 314.767 )
 [node name="BoxC4" parent="BoxCs" instance=ExtResource( 4 )]
 position = Vector2( 518.332, 164.708 )
 
-[node name="RigidBod15" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( -111.122, 402.556 )
-
-[node name="RigidBod16" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( -84.2877, 355.91 )
-
-[node name="RigidBod21" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 17.4976, 440.931 )
-
-[node name="RigidBod22" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( -14.2354, 394.229 )
-
-[node name="RigidBod23" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( -35.7899, 351.719 )
-
-[node name="RigidBod17" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( -133.329, 450.672 )
-
-[node name="RigidBod18" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( -81.5122, 450.672 )
-
-[node name="RigidBod19" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( -64.8566, 402.556 )
-
-[node name="RigidBod20" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( -31.5455, 443.27 )
-
-[node name="RigidBod32" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 43.3248, 395.908 )
-
-[node name="RigidBod31" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( -52.8324, 306.048 )
-
-[node name="RigidBod30" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 61.4318, 351.18 )
-
-[node name="RigidBod29" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( -7.15692, 306.694 )
-
-[node name="RigidBod28" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 14.5019, 346.179 )
-
-[node name="RigidBod27" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 72.087, 450.672 )
-
-[node name="RigidBod26" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( -26.9938, 256.905 )
-
-[node name="RigidBod25" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 88.1661, 401.699 )
-
-[node name="RigidBod24" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 46.4471, 304.766 )
-
-[node name="RigidBod50" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 147.805, 399.984 )
-
-[node name="RigidBod49" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 174.64, 353.338 )
-
-[node name="RigidBod48" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 276.425, 438.358 )
-
-[node name="RigidBod47" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 244.692, 391.657 )
-
-[node name="RigidBod46" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 223.137, 349.147 )
-
-[node name="RigidBod45" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 125.598, 448.1 )
-
-[node name="RigidBod44" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 177.415, 448.1 )
-
-[node name="RigidBod43" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 194.071, 399.984 )
-
-[node name="RigidBod42" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 227.382, 440.698 )
-
-[node name="RigidBod41" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 161.643, 298.167 )
-
-[node name="RigidBod40" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 206.095, 303.476 )
-
-[node name="RigidBod39" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 106.873, 303.167 )
-
-[node name="RigidBod38" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 130.88, 244.106 )
-
-[node name="RigidBod37" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 71.946, 206.426 )
-
-[node name="RigidBod36" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 84.0902, 257.763 )
-
-[node name="RigidBod35" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 13.3029, 205.463 )
-
-[node name="RigidBod34" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 27.2925, 258.517 )
-
-[node name="RigidBod33" parent="BoxCs" instance=ExtResource( 5 )]
-position = Vector2( 117.609, 347.634 )
-
 [node name="Boxes2" type="Node2D" parent="."]
+
+[node name="Damageable" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 185.403, 426.577 )
+
+[node name="Damageable2" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 232.131, 391.909 )
+
+[node name="Damageable3" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 238.16, 449.188 )
+
+[node name="Damageable4" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 135.661, 446.173 )
+
+[node name="Damageable5" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 153.749, 382.865 )
+
+[node name="Damageable6" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 81.3965, 444.666 )
+
+[node name="Damageable7" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 96.4699, 391.909 )
+
+[node name="Damageable8" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 122.095, 331.615 )
+
+[node name="Damageable9" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 183.896, 334.63 )
+
+[node name="Damageable10" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 150.734, 272.829 )
 
 [node name="AI" type="Node2D" parent="."]
 
 [node name="AI" parent="AI" instance=ExtResource( 3 )]
 position = Vector2( 855.17, 124.672 )
+gravity_scale = 12.0
 
 [node name="AI2" parent="AI" instance=ExtResource( 3 )]
 position = Vector2( -260.462, 281.122 )
+gravity_scale = 12.0
 
 [node name="AI3" parent="AI" instance=ExtResource( 3 )]
 position = Vector2( 861.014, 241.552 )
+gravity_scale = 12.0

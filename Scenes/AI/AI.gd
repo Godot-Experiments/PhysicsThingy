@@ -12,7 +12,7 @@ func _ready():
 	move *= (randi() % 2) * 2 - 1
 	$Timer.start(randf())
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	apply_impulse(Vector2(0, 0), Vector2(move, 0))
 
 

@@ -37,8 +37,8 @@ func _on_Damageable_body_entered(body):
 			if vel > 6:
 				damage(vel)
 
-func FireAt(pos: Vector2, team: String=Global.T2):
-	var bullet = bulletRes.instance()
+func FireAt(pos: Vector2, team: String=Global.T2, proj=bulletRes):
+	var bullet = proj.instance()
 	bullet.team = team
 	var vel = pos.normalized()
 	bullet.position = position + vel * .9

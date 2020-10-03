@@ -20,5 +20,6 @@ func _physics_process(delta):
 
 func _on_Aoe_body_entered(body):
 	if body.is_in_group(Global.Damageable):
-		body.apply_impulse(Vector2(0, 0), (body.position - position) * 8)
+		var impulse: Vector2 = body.position - position
+		body.apply_impulse(Vector2(0, 0), impulse.normalized() * 16384 / max(1, impulse.length()))
 #		body.damage(10)

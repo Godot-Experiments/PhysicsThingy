@@ -6,6 +6,7 @@ var fall = 64
 var turnspeed = 5
 var wIndex = 0
 
+var rocketRes = preload("res://Scenes/Projectiles/Rocket.tscn")
 var explosion = preload("res://Scenes/Projectiles/Explosion.tscn")
 
 #var dustRes = preload("res://Test/DustShower.tscn")
@@ -20,19 +21,32 @@ func _ready():
 #	pm.friction = 0
 #	physics_material_override = pm
 
-func _physics_process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		wIndex = (wIndex + 1) % Global.weapons.size()
-		Global.weapon = Global.weapons.values()[wIndex]
-	if Input.is_action_just_pressed("click"):
-		if Global.weapon == Global.weapons.rocket:
-			var expl = explosion.instance()
-			expl.global_position = get_global_mouse_position()
-			get_tree().get_root().add_child(expl)
-		elif Global.weapon == Global.weapons.gun:
+func SwitchWeapon(index):
+	wIndex = (index) % Global.weapons.size()
+	Global.weapon = Global.weapons.values()[wIndex]
+
+func _physics_process(_delta):
+	if Input.is_action_just_pressed("ui_focus_next"):
+		SwitchWeapon(wIndex - 1)
+	elif Input.is_action_just_pressed("ui_focus_prev"):
+		SwitchWeapon(wIndex + 1)
+	elif Input.is_key_pressed(KEY_1):
+		SwitchWeapon(0)
+	elif Input.is_key_pressed(KEY_2):
+		SwitchWeapon(1)
+	elif Input.is_key_pressed(KEY_3):
+		SwitchWeapon(2)
+		
+	if Global.weapon == Global.weapons.rocket:
+		if Input.is_action_just_pressed("click"):
+			FireAt(get_global_mouse_position() - global_position, Global.T1, rocketRes)
+	elif Global.weapon == Global.weapons.gun:
+		if $Timer.is_stopped() and Input.is_action_pressed("click"):
+			$Timer.start()
 			FireAt(get_global_mouse_position() - global_position, Global.T1)
 		
-	$RayCast2D.rotation = -rotation
+	$Ground.rotation = -rotation
+	$Ground2.rotation = -rotation
 #	if Input.is_action_pressed("ui_left"):
 #		apply_central_impulse(Vector2(-speed, 0))
 #	if Input.is_action_pressed("ui_right"):
@@ -41,14 +55,21 @@ func _physics_process(delta):
 #		apply_central_impulse(Vector2(0, -jump))
 #	if Input.is_action_just_pressed("ui_down"):
 #		apply_central_impulse(Vector2(0, jump))
-	if get_node("RayCast2D").is_colliding():
+	if $Ground.is_colliding() or $Ground2.is_colliding():
 		MoveLateral()
+		MoveUp()
 	else:
 		MoveLateral(.125)
-	if Input.is_action_just_pressed("ui_up"):
-		apply_impulse(Vector2(0, 0), Vector2(0, -jump))
+	MoveDown()
+
+func MoveDown():
 	if Input.is_action_pressed("ui_down"):
 		apply_impulse(Vector2(0, 0), Vector2(0, fall))
+
+func MoveUp():
+	if Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_select"):
+		apply_impulse(Vector2(0, 0), Vector2(0, -jump))
+
 
 func MoveLateral(modifier=1):
 	if Input.is_action_pressed("ui_left"):
@@ -65,4 +86,6 @@ func MoveLateral(modifier=1):
 		if linear_velocity.x < 0:
 			move *= turnspeed
 		apply_impulse(Vector2(0, 0), Vector2(move, 0))
+
+
 

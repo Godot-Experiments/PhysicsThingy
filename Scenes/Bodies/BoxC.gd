@@ -9,7 +9,7 @@ func _ready():
 	hp = INF
 	add_to_group(Global.Controllable)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Global.weapon == Global.weapons.force and controllable and Input.is_action_pressed("click"):
 		var dir: Vector2 = (get_global_mouse_position() - global_position)
 		if dir.length() < MAXDIST:
@@ -22,9 +22,10 @@ func _physics_process(delta):
 
 
 func _on_BoxC_mouse_entered():
-	controllable = true
-	print("SLDFJ")
-	disconnect("mouse_entered", self, "_on_BoxC_mouse_entered")
+	if Global.weapon == Global.weapons.force:
+		controllable = true
+		print("SLDFJ")
+		disconnect("mouse_entered", self, "_on_BoxC_mouse_entered")
 
 
 #func _on_BoxC_mouse_exited():
