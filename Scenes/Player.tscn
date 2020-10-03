@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Damageable.tscn" type="PackedScene" id=2]
 [ext_resource path="res://tex/light.png" type="Texture" id=3]
+[ext_resource path="res://fonts/VT323-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 24.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 34
+font_data = ExtResource( 4 )
 
 [node name="Player" instance=ExtResource( 2 )]
 modulate = Color( 0, 0.694118, 1, 1 )
@@ -19,13 +24,17 @@ cast_to = Vector2( -19, 24 )
 enabled = true
 cast_to = Vector2( 19, 24 )
 
-[node name="CollisionPolygon2D" parent="." index="2"]
-shape = SubResource( 1 )
+[node name="Ground3" type="RayCast2D" parent="." index="2"]
+enabled = true
+cast_to = Vector2( 0, 24 )
 
-[node name="LightOccluder2D" parent="." index="4"]
+[node name="LightOccluder2D" parent="." index="3"]
 visible = false
 
-[node name="Camera2D" type="Camera2D" parent="." index="5"]
+[node name="CollisionPolygon2D" parent="." index="4"]
+shape = SubResource( 1 )
+
+[node name="Cam" type="Camera2D" parent="." index="6"]
 z_index = 1
 offset = Vector2( 0, -128 )
 current = true
@@ -35,7 +44,20 @@ drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
-[node name="Light2D" type="Light2D" parent="." index="6"]
+[node name="Label" type="Label" parent="Cam" index="0"]
+light_mask = 0
+margin_left = -919.042
+margin_top = -600.18
+margin_right = -648.042
+margin_bottom = -527.18
+custom_fonts/font = SubResource( 2 )
+text = "Weapon: Telekinesis
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Light2D" type="Light2D" parent="." index="7"]
 visible = false
 z_index = 1
 texture = ExtResource( 3 )
@@ -44,7 +66,7 @@ texture_scale = 50.0
 shadow_enabled = true
 shadow_gradient_length = 512.0
 
-[node name="Timer" type="Timer" parent="." index="7"]
+[node name="Timer" type="Timer" parent="." index="8"]
 process_mode = 0
 wait_time = 0.15
 one_shot = true

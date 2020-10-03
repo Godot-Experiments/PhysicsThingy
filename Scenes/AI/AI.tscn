@@ -10,11 +10,8 @@ radius = 20.0
 modulate = Color( 1, 0, 0, 1 )
 script = ExtResource( 2 )
 
-[node name="CollisionPolygon2D" parent="." index="0"]
+[node name="CollisionPolygon2D" parent="." index="1"]
 shape = SubResource( 1 )
-
-[node name="Sprite" parent="." index="1"]
-visible = false
 
 [node name="Timer" type="Timer" parent="." index="3"]
 process_mode = 0

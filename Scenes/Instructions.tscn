@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="Instructions" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 158.0
+margin_top = 165.0
+margin_right = 338.0
+margin_bottom = 256.0
+text = "Try out these keys: Q, E, WASD, Click, 1,2,3"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,13 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
+[ext_resource path="res://fonts/VT323-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/AI/AI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Bodies/BoxC.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Damageable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/AI/AIAuto.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Gfx/bg.png" type="Texture" id=7]
+[ext_resource path="res://Main.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Wall.tscn" type="PackedScene" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1000, 50 )
+[sub_resource type="DynamicFont" id=1]
+size = 34
+font_data = ExtResource( 1 )
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -16,49 +21,68 @@ adjustment_brightness = 1.1
 adjustment_contrast = 1.1
 adjustment_saturation = 1.5
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 128.906, 588.635 )
+
 [node name="Main" type="Node2D"]
+script = ExtResource( 8 )
 
 [node name="Bg" type="Sprite" parent="."]
 modulate = Color( 0.192157, 0.227451, 0.305882, 1 )
-position = Vector2( 475.559, 197.835 )
-scale = Vector2( 3293.28, -2305.58 )
+position = Vector2( 515.516, -313.011 )
+scale = Vector2( 5008.61, -3957.38 )
 texture = ExtResource( 7 )
 
+[node name="Label" type="Label" parent="."]
+light_mask = 0
+margin_left = 69.0374
+margin_top = 79.0349
+margin_right = 685.037
+margin_bottom = 170.035
+custom_fonts/font = SubResource( 1 )
+text = "Try out these keys: Q, E, WASD, Click, Shift, 1,2,3.
+
+For telekinesis, hover over the green boxes, and click.
+
+What happens if you smash into the enemies,
+ or throw boxes at them?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+light_mask = 0
+margin_left = -527.0
+margin_top = -212.0
+margin_right = -205.0
+margin_bottom = -121.0
+custom_fonts/font = SubResource( 1 )
+text = "Can you get up here?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.329412, 0.329412, 0.329412, 1 )
+color = Color( 0.694118, 0.694118, 0.694118, 1 )
 
 [node name="Walls" type="Node2D" parent="."]
 z_index = 1
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
-position = Vector2( -170.195, -159.942 )
+[node name="Wall" parent="Walls" instance=ExtResource( 9 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
-position = Vector2( 608.208, 686.17 )
-shape = SubResource( 1 )
+[node name="Wall5" parent="Walls" instance=ExtResource( 9 )]
+position = Vector2( 435.474, -1372.28 )
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
-position = Vector2( 100.388, -790.372 )
+[node name="Wall2" parent="Walls" instance=ExtResource( 9 )]
+position = Vector2( 705.106, -102.884 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4"]
-position = Vector2( 608.208, 686.17 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
-position = Vector2( -254.787, -55.8291 )
+[node name="Wall3" parent="Walls" instance=ExtResource( 9 )]
+position = Vector2( 1488.03, -421.438 )
 rotation = 1.5708
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
-position = Vector2( -368.422, 356.834 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
-position = Vector2( 1124.71, -33.0543 )
+[node name="Wall4" parent="Walls" instance=ExtResource( 9 )]
+position = Vector2( -613.08, -420.433 )
 rotation = 1.5708
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3"]
-position = Vector2( -390.314, -362.806 )
-shape = SubResource( 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
@@ -72,49 +96,82 @@ position = Vector2( 440.001, 396.28 )
 
 [node name="BoxC" parent="BoxCs" instance=ExtResource( 4 )]
 position = Vector2( 422.595, 168.004 )
+mass = 0.5
 
 [node name="BoxC2" parent="BoxCs" instance=ExtResource( 4 )]
 position = Vector2( 556.68, 357.626 )
+mass = 0.5
 
 [node name="BoxC3" parent="BoxCs" instance=ExtResource( 4 )]
 position = Vector2( 486.582, 314.767 )
+mass = 0.5
 
 [node name="BoxC4" parent="BoxCs" instance=ExtResource( 4 )]
 position = Vector2( 518.332, 164.708 )
+mass = 0.5
 
 [node name="Boxes2" type="Node2D" parent="."]
 
 [node name="Damageable" parent="Boxes2" instance=ExtResource( 5 )]
 position = Vector2( 185.403, 426.577 )
+mass = 0.5
 
 [node name="Damageable2" parent="Boxes2" instance=ExtResource( 5 )]
 position = Vector2( 232.131, 391.909 )
+mass = 0.5
 
 [node name="Damageable3" parent="Boxes2" instance=ExtResource( 5 )]
 position = Vector2( 238.16, 449.188 )
+mass = 0.5
 
 [node name="Damageable4" parent="Boxes2" instance=ExtResource( 5 )]
 position = Vector2( 135.661, 446.173 )
+mass = 0.5
+
+[node name="Damageable14" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 156.403, 200.577 )
+mass = 0.5
+
+[node name="Damageable13" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 203.131, 165.909 )
+mass = 0.5
+
+[node name="Damageable12" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 209.16, 223.188 )
+mass = 0.5
+
+[node name="Damageable11" parent="Boxes2" instance=ExtResource( 5 )]
+position = Vector2( 106.661, 220.173 )
+mass = 0.5
 
 [node name="Damageable5" parent="Boxes2" instance=ExtResource( 5 )]
 position = Vector2( 153.749, 382.865 )
+mass = 0.5
 
 [node name="Damageable6" parent="Boxes2" instance=ExtResource( 5 )]
 position = Vector2( 81.3965, 444.666 )
+mass = 0.5
 
 [node name="Damageable7" parent="Boxes2" instance=ExtResource( 5 )]
 position = Vector2( 96.4699, 391.909 )
+mass = 0.5
 
 [node name="Damageable8" parent="Boxes2" instance=ExtResource( 5 )]
 position = Vector2( 122.095, 331.615 )
+mass = 0.5
 
 [node name="Damageable9" parent="Boxes2" instance=ExtResource( 5 )]
 position = Vector2( 183.896, 334.63 )
+mass = 0.5
 
 [node name="Damageable10" parent="Boxes2" instance=ExtResource( 5 )]
 position = Vector2( 150.734, 272.829 )
+mass = 0.5
 
 [node name="AI" type="Node2D" parent="."]
+
+[node name="AIAuto" parent="AI" instance=ExtResource( 6 )]
+position = Vector2( 966.049, -338.817 )
 
 [node name="AI" parent="AI" instance=ExtResource( 3 )]
 position = Vector2( 855.17, 124.672 )
@@ -127,3 +184,22 @@ gravity_scale = 12.0
 [node name="AI3" parent="AI" instance=ExtResource( 3 )]
 position = Vector2( 861.014, 241.552 )
 gravity_scale = 12.0
+
+[node name="AI6" parent="AI" instance=ExtResource( 3 )]
+position = Vector2( 1285.05, -384.108 )
+gravity_scale = 12.0
+
+[node name="AI5" parent="AI" instance=ExtResource( 3 )]
+position = Vector2( 1059.1, -256.226 )
+gravity_scale = 12.0
+
+[node name="AI4" parent="AI" instance=ExtResource( 3 )]
+position = Vector2( 1290.89, -267.228 )
+gravity_scale = 12.0
+
+[node name="BossDetect" type="Area2D" parent="."]
+position = Vector2( -115.692, -748.145 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossDetect"]
+shape = SubResource( 3 )
+[connection signal="body_entered" from="BossDetect" to="." method="_on_Area2D_body_entered"]

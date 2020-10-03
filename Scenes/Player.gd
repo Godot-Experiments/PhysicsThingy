@@ -9,6 +9,8 @@ var wIndex = 0
 var rocketRes = preload("res://Scenes/Projectiles/Rocket.tscn")
 var explosion = preload("res://Scenes/Projectiles/Explosion.tscn")
 
+var wDic: Dictionary = {0: "Telekinesis", 1: "Rocket", 2: "Autogun"}
+
 #var dustRes = preload("res://Test/DustShower.tscn")
 #var dustColor = Color.red
 
@@ -24,8 +26,14 @@ func _ready():
 func SwitchWeapon(index):
 	wIndex = (index) % Global.weapons.size()
 	Global.weapon = Global.weapons.values()[wIndex]
+	$Cam/Label.text = "Weapon: " + wDic[wIndex]
 
 func _physics_process(_delta):
+	if Input.is_action_just_pressed("bullet_time"):
+		Engine.time_scale /= 2
+	elif Input.is_action_just_released("bullet_time"):
+		Engine.time_scale *= 2
+	
 	if Input.is_action_just_pressed("ui_focus_next"):
 		SwitchWeapon(wIndex - 1)
 	elif Input.is_action_just_pressed("ui_focus_prev"):
@@ -37,9 +45,8 @@ func _physics_process(_delta):
 	elif Input.is_key_pressed(KEY_3):
 		SwitchWeapon(2)
 		
-	if Global.weapon == Global.weapons.rocket:
-		if Input.is_action_just_pressed("click"):
-			FireAt(get_global_mouse_position() - global_position, Global.T1, rocketRes)
+	if (Global.weapon == Global.weapons.rocket and Input.is_action_just_pressed("click")) or Input.is_action_just_pressed("rclick"):
+		FireAt(get_global_mouse_position() - global_position, Global.T1, rocketRes)
 	elif Global.weapon == Global.weapons.gun:
 		if $Timer.is_stopped() and Input.is_action_pressed("click"):
 			$Timer.start()
@@ -47,6 +54,8 @@ func _physics_process(_delta):
 		
 	$Ground.rotation = -rotation
 	$Ground2.rotation = -rotation
+	$Ground3.rotation = -rotation
+	$Cam.rotation = -rotation
 #	if Input.is_action_pressed("ui_left"):
 #		apply_central_impulse(Vector2(-speed, 0))
 #	if Input.is_action_pressed("ui_right"):
@@ -55,7 +64,7 @@ func _physics_process(_delta):
 #		apply_central_impulse(Vector2(0, -jump))
 #	if Input.is_action_just_pressed("ui_down"):
 #		apply_central_impulse(Vector2(0, jump))
-	if $Ground.is_colliding() or $Ground2.is_colliding():
+	if $Ground.is_colliding() or $Ground2.is_colliding() or $Ground3.is_colliding():
 		MoveLateral()
 		MoveUp()
 	else:
