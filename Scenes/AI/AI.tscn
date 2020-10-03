@@ -13,6 +13,9 @@ script = ExtResource( 2 )
 [node name="CollisionPolygon2D" parent="." index="1"]
 shape = SubResource( 1 )
 
+[node name="Sprite" parent="." index="2"]
+scale = Vector2( 0.339289, 0.339289 )
+
 [node name="Timer" type="Timer" parent="." index="3"]
 process_mode = 0
 wait_time = 3.0

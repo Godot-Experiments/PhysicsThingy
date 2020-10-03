@@ -15,7 +15,7 @@ var wDic: Dictionary = {0: "Telekinesis", 1: "Rocket", 2: "Autogun"}
 #var dustColor = Color.red
 
 func _ready():
-	hp = INF
+	hp = 10
 	dustColor = Color.red
 	add_to_group(Global.T1)
 #	add_to_group(Global.Damageable)
@@ -26,7 +26,11 @@ func _ready():
 func SwitchWeapon(index):
 	wIndex = (index) % Global.weapons.size()
 	Global.weapon = Global.weapons.values()[wIndex]
-	$Cam/Label.text = "Weapon: " + wDic[wIndex]
+	$Cam/Weap.text = "Weapon: " + wDic[wIndex]
+
+func damage(dmg: float):
+	.damage(dmg)
+	$Cam/HP.text = "HP: " + str(hp)
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("bullet_time"):
@@ -97,4 +101,12 @@ func MoveLateral(modifier=1):
 		apply_impulse(Vector2(0, 0), Vector2(move, 0))
 
 
-
+func _on_Damageable_body_entered(body):
+	pass
+#	if is_instance_valid(body):
+##		print(body.name)
+#		if body.is_in_group(Global.Damageable):
+#			var vel = body.linear_velocity.length() / 64
+#	#		print(vel)
+#			if vel > 6:
+#				damage(vel)

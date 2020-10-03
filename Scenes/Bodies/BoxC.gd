@@ -6,7 +6,7 @@ var controllable = false
 
 func _ready():
 	set_pickable(true)
-	hp = INF
+#	hp = INF
 	add_to_group(Global.Controllable)
 
 func _physics_process(_delta):

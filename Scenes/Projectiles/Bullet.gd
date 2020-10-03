@@ -9,11 +9,15 @@ var can_dmg = true
 func _physics_process(_delta):
 	position += vel
 
+func SetVel(v: Vector2):
+	vel = v
+	vel *= speed
+	vel *= Engine.time_scale
 
 func _on_Bullet_body_entered(body):
 	if body.is_in_group(Global.Damageable) and not body.is_in_group(team):
 		body.splat(global_position)
-		body.damage(0)
+		body.damage(1)
 		end(body)
 	elif body is StaticBody2D:
 		end(body)

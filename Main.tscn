@@ -95,19 +95,19 @@ position = Vector2( 440.001, 396.28 )
 [node name="BoxCs" type="Node2D" parent="."]
 
 [node name="BoxC" parent="BoxCs" instance=ExtResource( 4 )]
-position = Vector2( 422.595, 168.004 )
+position = Vector2( 341.845, 447.304 )
 mass = 0.5
 
 [node name="BoxC2" parent="BoxCs" instance=ExtResource( 4 )]
-position = Vector2( 556.68, 357.626 )
+position = Vector2( 299.23, 394.676 )
 mass = 0.5
 
 [node name="BoxC3" parent="BoxCs" instance=ExtResource( 4 )]
-position = Vector2( 486.582, 314.767 )
+position = Vector2( 299.432, 448.717 )
 mass = 0.5
 
 [node name="BoxC4" parent="BoxCs" instance=ExtResource( 4 )]
-position = Vector2( 518.332, 164.708 )
+position = Vector2( 345.432, 393.658 )
 mass = 0.5
 
 [node name="Boxes2" type="Node2D" parent="."]
@@ -129,19 +129,19 @@ position = Vector2( 135.661, 446.173 )
 mass = 0.5
 
 [node name="Damageable14" parent="Boxes2" instance=ExtResource( 5 )]
-position = Vector2( 156.403, 200.577 )
+position = Vector2( 166.853, 228.177 )
 mass = 0.5
 
 [node name="Damageable13" parent="Boxes2" instance=ExtResource( 5 )]
-position = Vector2( 203.131, 165.909 )
+position = Vector2( 557.481, 402.459 )
 mass = 0.5
 
 [node name="Damageable12" parent="Boxes2" instance=ExtResource( 5 )]
-position = Vector2( 209.16, 223.188 )
+position = Vector2( 194.91, 286.838 )
 mass = 0.5
 
 [node name="Damageable11" parent="Boxes2" instance=ExtResource( 5 )]
-position = Vector2( 106.661, 220.173 )
+position = Vector2( 558.861, 452.923 )
 mass = 0.5
 
 [node name="Damageable5" parent="Boxes2" instance=ExtResource( 5 )]
@@ -171,7 +171,10 @@ mass = 0.5
 [node name="AI" type="Node2D" parent="."]
 
 [node name="AIAuto" parent="AI" instance=ExtResource( 6 )]
-position = Vector2( 966.049, -338.817 )
+position = Vector2( 1387.36, -196.658 )
+gravity_scale = 10.0
+contacts_reported = 1
+contact_monitor = true
 
 [node name="AI" parent="AI" instance=ExtResource( 3 )]
 position = Vector2( 855.17, 124.672 )
@@ -186,15 +189,15 @@ position = Vector2( 861.014, 241.552 )
 gravity_scale = 12.0
 
 [node name="AI6" parent="AI" instance=ExtResource( 3 )]
-position = Vector2( 1285.05, -384.108 )
+position = Vector2( 1211.39, -200.593 )
 gravity_scale = 12.0
 
 [node name="AI5" parent="AI" instance=ExtResource( 3 )]
-position = Vector2( 1059.1, -256.226 )
+position = Vector2( 885.924, -189.023 )
 gravity_scale = 12.0
 
 [node name="AI4" parent="AI" instance=ExtResource( 3 )]
-position = Vector2( 1290.89, -267.228 )
+position = Vector2( 1051.8, -196.148 )
 gravity_scale = 12.0
 
 [node name="BossDetect" type="Area2D" parent="."]

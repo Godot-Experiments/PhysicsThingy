@@ -42,6 +42,6 @@ func FireAt(pos: Vector2, team: String=Global.T2, proj=bulletRes):
 	bullet.team = team
 	var vel = pos.normalized()
 	bullet.position = position + vel * .9
-	bullet.vel = vel * bullet.speed
+	bullet.SetVel(vel)
 	bullet.rotation = vel.angle()
 	get_tree().get_root().add_child(bullet)
